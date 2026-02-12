@@ -1,0 +1,184 @@
+/* ===========================
+   ESTILO GENERAL
+   =========================== */
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #0a0a0a;           /* negro profundo */
+    background-image:
+        radial-gradient(ellipse at top, rgba(139, 0, 0, 0.15), transparent),
+        radial-gradient(ellipse at bottom, rgba(218, 165, 32, 0.1), transparent);
+    color: #e8d4b0;                /* dorado claro */
+    font-family: 'Georgia', serif;
+    text-shadow: 0 0 4px rgba(218, 165, 32, 0.3); /* brillo dorado suave */
+}
+
+/* ------------------------------
+   FUENTE TIPO HOUSE OF THE DRAGON
+   (Estilo medieval con toques Targaryen)
+   ------------------------------ */
+
+h1 {
+    text-align: center;
+    font-size: 52px;
+    margin: 20px 0;
+    letter-spacing: 6px;
+    color: #d4af37;                /* dorado Targaryen */
+    font-family: "Georgia", serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow:
+        0 0 8px #ff6b00,           /* naranja fuego */
+        0 0 16px #8b0000,          /* rojo oscuro */
+        0 0 24px #4a0000,          /* rojo muy oscuro */
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    border-bottom: 3px solid #d4af37;
+    padding-bottom: 15px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===========================
+   GRID DE TARJETAS
+   =========================== */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    width: 90%;
+    margin: auto;
+}
+
+/* ===========================
+   TARJETAS
+   =========================== */
+
+.card {
+    background: linear-gradient(135deg, rgba(20, 15, 10, 0.9), rgba(40, 25, 15, 0.85));
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid rgba(212, 175, 55, 0.4);  /* borde dorado */
+    box-shadow:
+        0 0 12px rgba(255, 107, 0, 0.3),        /* resplandor naranja */
+        0 0 24px rgba(139, 0, 0, 0.4),          /* resplandor rojo */
+        inset 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de llama en hover */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card:hover {
+    transform: scale(1.05) translateY(-5px);
+    border-color: #d4af37;
+    box-shadow:
+        0 0 20px rgba(255, 107, 0, 0.6),
+        0 0 35px rgba(139, 0, 0, 0.5),
+        0 8px 25px rgba(0, 0, 0, 0.7);
+}
+
+/* Imagen */
+.card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid #8b6914;     /* dorado oscuro */
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.6),
+        inset 0 0 15px rgba(255, 107, 0, 0.1);
+    transition: filter 0.3s, border-color 0.3s;
+}
+
+.card:hover img {
+    filter: brightness(1.15) contrast(1.1);
+    border-color: #d4af37;
+}
+
+/* Nombre del personaje */
+.card .name {
+    font-size: 24px;
+    margin-top: 10px;
+    color: #d4af37;                /* dorado */
+    text-align: center;
+    font-family: "Georgia", serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow:
+        0 0 6px #ff6b00,
+        0 0 12px #8b0000,
+        1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Texto */
+.card p {
+    margin: 8px 0;
+    color: #c4a574;                /* beige dorado */
+    font-size: 14px;
+}
+
+.card p strong {
+    color: #d4af37;
+    text-shadow: 0 0 3px rgba(255, 107, 0, 0.4);
+}
+
+/* Enlace detalle */
+.card a {
+    color: #ff8c42;                /* naranja fuego */
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow:
+        0 0 4px #ff6b00,
+        0 0 8px #8b0000;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.card a:hover {
+    color: #d4af37;
+    text-decoration: underline;
+    text-shadow:
+        0 0 6px #ffd700,
+        0 0 12px #ff6b00;
+}
+
+/* TARJETA SIN FOTO */
+.card.no-photo {
+    opacity: 0.5;
+    filter: grayscale(70%);
+    border-color: rgba(139, 105, 20, 0.3);
+    box-shadow:
+        0 0 8px rgba(139, 0, 0, 0.2),
+        inset 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+.card.no-photo .name {
+    color: #8b6914;
+    text-shadow: 0 0 4px rgba(139, 0, 0, 0.4);
+}
+
+.card.no-photo img {
+    border-color: #4a3410;
+    filter: brightness(0.5) contrast(0.7) grayscale(50%);
+}
